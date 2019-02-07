@@ -4,6 +4,7 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
+      - go get github.com/gorilla/mux 
       - aws --version
       - $(aws ecr get-login --no-include-email --region ap-northeast-2)
       - REPOSITORY_URI=522373083963.dkr.ecr.ap-northeast-2.amazonaws.com/joinc/user
@@ -11,6 +12,8 @@ phases:
       - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
     commands:
+      - echo Source code compile... 
+      - make build
       - echo Build started on `date`
       - echo Building the Docker image...          
       - docker build -t $REPOSITORY_URI:latest .
