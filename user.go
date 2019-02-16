@@ -10,7 +10,7 @@ import (
 func h_hello(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	name := vars["name"]
-	fmt.Fprintf(w, "Hello %s! New Version", name)
+	fmt.Fprintf(w, "Hello %s!. How are you", name)
 }
 
 func main() {
